@@ -11,22 +11,27 @@ public class Car {
         this.yearOfProduction = yearOfProduction;
     }
 
-    // Геттеры и сеттеры для полей
-
+    // Геттеры и сеттеры
     public String getBrand() {
-        return brand; }
+        return brand;
+    }
+
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
     public String getModel() {
-        return model; }
+        return model;
+    }
+
     public void setModel(String model) {
         this.model = model;
     }
 
     public int getYearOfProduction() {
-        return yearOfProduction; }
+        return yearOfProduction;
+    }
+
     public void setYearOfProduction(int yearOfProduction) {
         this.yearOfProduction = yearOfProduction;
     }
