@@ -5,25 +5,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import web.model.Car;
-import web.service.CarServiceInterface;
+import org.springframework.web.servlet.ModelAndView;
+import web.service.CarService;
 
 @Controller
 @RequestMapping("/cars")
 public class CarsController {
-    private final CarServiceInterface carService;
+    private final CarService carService;
 
-    public CarsController(CarServiceInterface carService) {
+    public CarsController(CarService carService) {
         this.carService = carService;
     }
 
     @GetMapping
-    public String showCars(
-            @RequestParam(required = false, defaultValue = "5") Integer count,
-            Model model
-    ) {
-        model.addAttribute("cars", carService.getCars(count));
-        model.addAttribute("currentCount", count);
-        return "cars";
+    public ModelAndView showCars(@RequestParam(defaultValue = "5") int count) {
+        return new ModelAndView("cars")
+                .addObject("cars", carService.getCars(count))
+                .addObject("currentCount", count);
     }
 }
